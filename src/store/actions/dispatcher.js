@@ -21,6 +21,14 @@ export function toggleWidget() {
   store.dispatch(actions.toggleChat());
 }
 
+export function showWidget() {
+  store.dispatch(actions.showChat());
+}
+
+export function hideWidget() {
+  store.dispatch(actions.hideChat());
+}
+
 export function toggleInputDisabled() {
   store.dispatch(actions.toggleInputDisabled());
 }

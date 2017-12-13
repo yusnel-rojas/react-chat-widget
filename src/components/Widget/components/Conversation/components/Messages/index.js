@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
+import Typing from '../Typing';
 
 import './styles.scss';
 
@@ -27,6 +28,11 @@ class Messages extends Component {
     return <ComponentToRender message={message} />;
   };
 
+  getTypingComponentToRender = (typingParams) => {
+    const ComponentToRender = typingParams.component || Typing;
+    return <ComponentToRender {...typingParams}>...</ComponentToRender>;
+  };
+
   render() {
     return (
       <div id="messages" className="messages-container">
@@ -44,6 +50,18 @@ class Messages extends Component {
             </div>
           )
         }
+        {
+            this.props.isTyping &&
+            <div className="message typing">
+              {
+                this.props.profileAvatar &&
+                <img src={this.props.profileAvatar} className="avatar" alt="profile" />
+              }
+              {
+                this.getTypingComponentToRender({})
+              }
+            </div>
+        }
       </div>
     );
   }
@@ -51,7 +69,8 @@ class Messages extends Component {
 
 Messages.propTypes = {
   messages: ImmutablePropTypes.listOf(ImmutablePropTypes.map),
-  profileAvatar: PropTypes.string
+  profileAvatar: PropTypes.string,
+  isTyping: PropTypes.bool
 };
 
 export default connect(store => ({

@@ -6,6 +6,18 @@ export function toggleChat() {
   };
 }
 
+export function showChat() {
+  return {
+    type: actions.SHOW_CHAT
+  };
+}
+
+export function hideChat() {
+  return {
+    type: actions.HIDE_CHAT
+  };
+}
+
 export function toggleInputDisabled() {
   return {
     type: actions.TOGGLE_INPUT_DISABLED

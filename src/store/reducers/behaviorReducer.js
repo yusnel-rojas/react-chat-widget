@@ -5,6 +5,12 @@ const initialState = Map({ showChat: false, disabledInput: false });
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case actionTypes.SHOW_CHAT: {
+      return state.update('showChat', true);
+    }
+    case actionTypes.HIDE_CHAT: {
+      return state.update('showChat', false);
+    }
     case actionTypes.TOGGLE_CHAT: {
       return state.update('showChat', showChat => !showChat);
     }

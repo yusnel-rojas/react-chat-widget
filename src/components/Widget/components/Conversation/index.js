@@ -13,9 +13,11 @@ const Conversation = props =>
       subtitle={props.subtitle}
       toggleChat={props.toggleChat}
       showCloseButton={props.showCloseButton}
+      isTyping={props.isTyping}
     />
     <Messages
       profileAvatar={props.profileAvatar}
+      isTyping={props.isTyping}
     />
     <Sender
       sendMessage={props.sendMessage}
@@ -31,6 +33,7 @@ Conversation.propTypes = {
   senderPlaceHolder: PropTypes.string,
   profileAvatar: PropTypes.string,
   toggleChat: PropTypes.func,
+  isTyping: PropTypes.bool,
   showCloseButton: PropTypes.bool,
   disabledInput: PropTypes.bool
 };
